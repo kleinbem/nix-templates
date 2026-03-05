@@ -18,9 +18,9 @@
         in
         {
           devShells.default = pkgs.mkShell {
-            packages = [ pkgs.nixfmt-rfc-style ];
+            packages = [ pkgs.nixfmt ];
           };
-          formatter = pkgs.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt;
         };
 
       flake = {
