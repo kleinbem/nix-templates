@@ -35,6 +35,8 @@
             src = ./.;
             hooks = {
               nixfmt.enable = true;
+              statix.enable = true;
+              deadnix.enable = true;
             };
           };
 
@@ -45,6 +47,8 @@
             '';
             buildInputs = [
               pkgs.nixfmt
+              pkgs.statix
+              pkgs.deadnix
             ];
           };
         };
