@@ -14,7 +14,7 @@
       perSystem =
         { system, ... }:
         let
-          pkgs = import inputs.nixpkgs { inherit system; };
+          pkgs = import inputs.nixpkgs { localSystem = system; };
         in
         {
           devShells.default = pkgs.mkShell {
