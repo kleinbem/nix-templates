@@ -6,8 +6,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+    git-hooks.url = "github:cachix/git-hooks.nix";
+    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -35,7 +35,7 @@
           };
 
           # Pre-commit Checks
-          checks.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          checks.pre-commit-check = inputs.git-hooks.lib.${system}.run {
             src = ./.;
             hooks = {
               nixfmt.enable = true;
