@@ -23,9 +23,10 @@ list-templates:
         | jq -r '.[]' 2>/dev/null \
         || nix flake show .
 
-# Instantiate a template into the target directory (created if missing).
+# Instantiate a template into the target directory (created if missing,
+# relative to where just was run).
 # Example: `just init default ~/projects/new-app`
 [group("Use")]
 init template target:
     @echo "📐 Initialising "{{quote(template)}}" into "{{quote(target)}}"..."
-    @nix flake new -t .#{{quote(template)}} {{quote(target)}} --extra-experimental-features "nix-command flakes"
+    @cd {{quote(invocation_directory())}} && nix flake new -t {{quote(justfile_directory() + "#" + template)}} {{quote(target)}} --extra-experimental-features "nix-command flakes"
