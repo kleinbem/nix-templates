@@ -9,7 +9,7 @@ default:
 [group("Linter")]
 check:
     @echo "📐 Verifying templates flake..."
-    @nix flake check . --impure
+    @nix flake check . --keep-going
 
 [group("Linter")]
 fmt:
@@ -23,10 +23,9 @@ list-templates:
         | jq -r '.[]' 2>/dev/null \
         || nix flake show .
 
-# Instantiate a template into the target directory.
-# Example: `just init python-poetry ~/projects/new-app`
+# Instantiate a template into the target directory (created if missing).
+# Example: `just init default ~/projects/new-app`
 [group("Use")]
 init template target:
     @echo "📐 Initialising '{{template}}' into {{target}}..."
-    @nix flake init -t .#{{template}} --refresh --extra-experimental-features "nix-command flakes"
-    @echo "💡 If you wanted a different directory, move the generated files: mv * '{{target}}'"
+    @nix flake new -t .#{{template}} '{{target}}' --extra-experimental-features "nix-command flakes"
