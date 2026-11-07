@@ -13,6 +13,7 @@ Nix flake templates for quick project initialization, exposed via
 ## Usage
 
 ```bash
+# one of these, in an empty project directory
 nix flake init -t github:kleinbem/nix-templates#default
 nix flake init -t github:kleinbem/nix-templates#module
 ```

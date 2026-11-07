@@ -9,9 +9,10 @@ This repository contains Nix flake templates for quick project initialization.
 
 ## Usage
 
-Initialize a new project using `nix flake init`:
+Pick one template and run it in an empty project directory:
 
 ```bash
 nix flake init -t github:kleinbem/nix-templates#default
+# or
 nix flake init -t github:kleinbem/nix-templates#module
 ```

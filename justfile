@@ -27,5 +27,5 @@ list-templates:
 # Example: `just init default ~/projects/new-app`
 [group("Use")]
 init template target:
-    @echo "📐 Initialising '{{template}}' into {{target}}..."
-    @nix flake new -t .#{{template}} '{{target}}' --extra-experimental-features "nix-command flakes"
+    @echo "📐 Initialising "{{quote(template)}}" into "{{quote(target)}}"..."
+    @nix flake new -t .#{{quote(template)}} {{quote(target)}} --extra-experimental-features "nix-command flakes"
